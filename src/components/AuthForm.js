@@ -1,35 +1,44 @@
 import React, { useState } from 'react';
-import { withNavigation } from 'react-navigation';
-import { StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
-import { Input, Button, Text, Avatar } from 'react-native-elements';
+import { StyleSheet,TouchableOpacity, Image, View, SafeAreaView } from 'react-native';
+import { Input, Button, Text } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { Ionicons } from '@expo/vector-icons'; 
 import Spacer from '../components/Spacer';
+import { useNavigation } from '@react-navigation/native';
 
-const AuthForm = ({ navigationLink, linkMessage, buttonTitle, navigation, action }) => {
+const AuthForm = ({ navigationLink, linkMessage, buttonTitle, action }) => {
+
+    const navigation = useNavigation();
 
     const [passwordShown, setPasswordShown] = useState(false);
 
     const togglePasswordVisibility = () => {
         setPasswordShown(passwordShown ? false: true);
     };
+
+    const logo = require("../img/logo.jpg");
+
     return (
         <SafeAreaView>
+            <View style={styles.container}>
+
             <Spacer style={ styles.container }>
-                <Image style={ styles.logo }/>
+                <Image style={ styles.logo }
+                    source={logo}/>
             </Spacer>
                 
             <Spacer>
                 <Input
-                    style={styles.input}
+                    inputContainerStyle={styles.input}
                     placeholder='Email'
-                    leftIcon={ <MaterialCommunityIcons name="email-outline" size={24} color="black" /> }
+                    leftIcon={ <MaterialCommunityIcons name="email-outline" size={24} color="black"
+                    
+                    />}
                 />
             </Spacer>
             
             <Spacer>
                 <Input
-                    style={styles.input}
+                    inputContainerStyle={styles.input}
                     placeholder='Password'
                     leftIcon={ <MaterialCommunityIcons name="lock-outline" size={24} color="black" /> }
                     secureTextEntry= {passwordShown}
@@ -43,6 +52,8 @@ const AuthForm = ({ navigationLink, linkMessage, buttonTitle, navigation, action
                 <Button 
                     title={buttonTitle}
                     onPress={ () =>  action  }
+                    buttonStyle={ styles.button }
+                    titleStyle={styles.buttonTitle}
                 />
             </Spacer>
 
@@ -50,24 +61,40 @@ const AuthForm = ({ navigationLink, linkMessage, buttonTitle, navigation, action
                 <Text style={styles.text}> {linkMessage} </Text>
             </TouchableOpacity>
             
+        </View>
         </SafeAreaView>
     );
 };  
 
 const styles = StyleSheet.create({
+    input: {
+        backgroundColor: 'white',
+        borderRadius: 20,
+        paddingHorizontal: 10
+    },
     text: {
-        color: 'blue',
-        fontSize: 12,
+        color: 'orange',
+        fontSize: 14,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
         marginHorizontal: 15 
     },
     logo: {
-        marginTop: 10,
+        marginVertical: 10,
         width: 150,
         height: 150,
         borderRadius: 200,
-        backgroundColor: 'gray',
+        backgroundColor: 'white',
         alignSelf: 'center'
     },
+    button: {
+        borderRadius: 20,
+        backgroundColor: 'orange'
+    },
+    buttonTitle: {
+        fontWeight: 'bold',
+        fontSize: 18,
+    }
 });
 
-export default withNavigation(AuthForm);
+export default AuthForm;
