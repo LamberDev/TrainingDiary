@@ -33,6 +33,8 @@ const AuthForm = ({ navigationLink, linkMessage, buttonTitle, action }) => {
                     leftIcon={ <MaterialCommunityIcons name="email-outline" size={24} color="black"
                     
                     />}
+                    autoCapitalize='none'
+                    autoCorrect={false}
                 />
             </Spacer>
             
@@ -40,6 +42,8 @@ const AuthForm = ({ navigationLink, linkMessage, buttonTitle, action }) => {
                 <Input
                     inputContainerStyle={styles.input}
                     placeholder='Password'
+                    autoCapitalize='none'
+                    autoCorrect={false}
                     leftIcon={ <MaterialCommunityIcons name="lock-outline" size={24} color="black" /> }
                     secureTextEntry= {passwordShown}
                     rightIcon = { <TouchableOpacity onPress={ togglePasswordVisibility }>
