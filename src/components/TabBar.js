@@ -13,6 +13,20 @@ const TabBar = () => {
     return (
         <TabSatck.Navigator
           screenOptions={{
+            headerStyle: {
+                backgroundColor: 'black',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderBottomColor: 'orange'
+            },
+            headerTintColor: 'orange',
+            headerRight: ()=> {
+              return (
+                <TouchableOpacity style={styles.profile}>
+                    <Ionicons name="person" size={30} color="black" />
+                </TouchableOpacity>
+              );
+            },
             tabBarShowLabel: false,
             tabBarStyle: {
               backgroundColor: 'orange',
@@ -21,29 +35,30 @@ const TabBar = () => {
               right: 20,
               left: 20,
               elevation: 0,
-              height: 70,
+              height: 80,
               justifyContent: 'space-between',
               borderRadius: 15,
-              ... styles.shadow
+              ... styles.shadow,
             }
           }}
         >
-          <TabSatck.Screen name="Lifts" component={HomeScreen} options={
-              {
+          <TabSatck.Screen name="Lifts" component={HomeScreen} options={{
                 tabBarIcon: () => {
-                    return(
-                   <View style={styles.tabBarIcon}>
-                      <MaterialCommunityIcons name="weight-lifter" size={30} color='black' />
-                   </View>);
+                  return(
+                          <View style={styles.tabBarIcon}>
+                                <MaterialCommunityIcons name="weight-lifter" size={40} color='black' />
+                          </View>
+                   );
                    }
               }
           } />
           <TabSatck.Screen name="Home" component={HomeScreen} options={{
             tabBarIcon: () => {
              return(
-            <View style={styles.tabBarIcon}>
-                <FontAwesome name="home" size={30} color="black" />
-            </View>);
+                  <View style={styles.tabBarIcon}>  
+                      <FontAwesome name="home" size={40} color="black" />
+                  </View>
+            );
             }
           }} />
           <TabSatck.Screen name="Routine" component={HomeScreen} 
@@ -51,12 +66,10 @@ const TabBar = () => {
             {
               tabBarIcon: () => {
                   return(
-                 <View style={styles.tabBarIcon}>
-                    <TouchableOpacity>
-                      <FontAwesome name="th-list" size={20} color="black" />
-                    </TouchableOpacity>
-                 </View>);
-                 }
+                    <View style={styles.tabBarIcon}>
+                        <FontAwesome name="th-list" size={30} color="black" />
+                    </View>
+                  )}
             }
         }/>
          <TabSatck.Screen name="Settings" component={HomeScreen} 
@@ -64,10 +77,10 @@ const TabBar = () => {
             {
               tabBarIcon: () => {
                   return(
-                 <View style={styles.tabBarIcon}>
-                      <Ionicons name="settings" size={20} color="black" />
-                 </View>);
-                 }
+                      <View style={styles.tabBarIcon}>
+                        <Ionicons name="settings" size={30} color="black" />
+                      </View>
+                  )}
             }
         }/>
         </TabSatck.Navigator>
@@ -88,8 +101,8 @@ const styles = StyleSheet.create({
     tabBarIcon: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 40,
-        width: 40,
+        height: 50,
+        width: 50,
         borderRadius: 60,
         backgroundColor: 'white',
         shadowColor: 'black',
@@ -100,6 +113,16 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.5,
         elevation: 5
+    },
+    profile: {
+      justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        width: 50,
+        borderRadius: 60,
+        backgroundColor: 'orange',
+        marginRight: 15,
+        marginBottom: 10
     }
 });
 

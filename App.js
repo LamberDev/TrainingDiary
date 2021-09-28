@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import LoginScreen from './src/screens/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SignInScreen from './src/screens/SignInScreen';
 import { StyleSheet} from 'react-native';
 import TabBar from './src/components/TabBar';
 
 
 const AuthStack = createStackNavigator();
-const TabSatck = createBottomTabNavigator();
 
 
 
@@ -21,8 +19,8 @@ const App = () => {
     <NavigationContainer>
       { isSignedIn  ? (
         <AuthStack.Navigator>
-        <AuthStack.Screen name="login" component={LoginScreen} options={{ headerShown: false }}/>
-        <AuthStack.Screen name="signin" component={SignInScreen} options={{ headerShown: false }} />
+            <AuthStack.Screen name="login" component={LoginScreen} options={{ headerShown: false }}/>
+            <AuthStack.Screen name="signin" component={SignInScreen} options={{ headerShown: false }} />
       </AuthStack.Navigator>
       ): (
         <TabBar></TabBar>
@@ -32,21 +30,7 @@ const App = () => {
 }
 
 const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 0,
-      height: 10
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5
-  },
-  tabBarIcon: {
-    height: 25,
-    width: 25,
-    tintColor: 'white'
-  }
+  
 });
 
 export default App;
