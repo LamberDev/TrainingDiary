@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View,TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import LoginScreen from '../screens/LoginScreen';
-import SignInScreen from '../screens/SignInScreen';
 import HomeScreen from '../screens/HomeScreen';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
 
 
 const TabSatck = createBottomTabNavigator();
@@ -22,9 +21,10 @@ const TabBar = () => {
               right: 20,
               left: 20,
               elevation: 0,
-              height: 80,
-              borderRadius: 20,
-              ...styles.shadow
+              height: 70,
+              justifyContent: 'space-between',
+              borderRadius: 15,
+              ... styles.shadow
             }
           }}
         >
@@ -33,7 +33,7 @@ const TabBar = () => {
                 tabBarIcon: () => {
                     return(
                    <View style={styles.tabBarIcon}>
-                      <MaterialCommunityIcons name="weight-lifter" size={40} color="black" />
+                      <MaterialCommunityIcons name="weight-lifter" size={30} color='black' />
                    </View>);
                    }
               }
@@ -42,7 +42,7 @@ const TabBar = () => {
             tabBarIcon: () => {
              return(
             <View style={styles.tabBarIcon}>
-                <FontAwesome name="home" size={55} color="black" />
+                <FontAwesome name="home" size={30} color="black" />
             </View>);
             }
           }} />
@@ -52,7 +52,20 @@ const TabBar = () => {
               tabBarIcon: () => {
                   return(
                  <View style={styles.tabBarIcon}>
-                    <FontAwesome name="th-list" size={30} color="black" />
+                    <TouchableOpacity>
+                      <FontAwesome name="th-list" size={20} color="black" />
+                    </TouchableOpacity>
+                 </View>);
+                 }
+            }
+        }/>
+         <TabSatck.Screen name="Settings" component={HomeScreen} 
+          options={
+            {
+              tabBarIcon: () => {
+                  return(
+                 <View style={styles.tabBarIcon}>
+                      <Ionicons name="settings" size={20} color="black" />
                  </View>);
                  }
             }
@@ -75,16 +88,16 @@ const styles = StyleSheet.create({
     tabBarIcon: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 60,
-        width: 60,
+        height: 40,
+        width: 40,
         borderRadius: 60,
         backgroundColor: 'white',
         shadowColor: 'black',
         shadowOffset: {
             width: 0,
-            height: 10
+            height: 5
         },
-        shadowOpacity: 2,
+        shadowOpacity: 0.25,
         shadowRadius: 3.5,
         elevation: 5
     }
