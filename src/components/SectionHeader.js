@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     container: {
         height: 40,
         borderRadius: 20,
-        backgroundColor: 'orange',
+        backgroundColor: '#FCD535',
+        opacity: 0.75,
         width: responsiveScreenWidth(70),
         justifyContent: 'center',
         alignSelf: 'flex-start',
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     title: {
         marginLeft: 20,
         fontSize: 24,
-        color: 'white',
+        color: 'black',
         fontWeight: 'bold'
     }
 });

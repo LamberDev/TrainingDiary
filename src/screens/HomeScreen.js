@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'black',
+        backgroundColor: '#FFFFFF',
         position: 'absolute',
         ...StyleSheet.absoluteFill
     },
